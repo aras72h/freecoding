@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        canvas {
+            background-color: #6EACDA;
+            color: #021526;
+            width: 50vw;
+            height: 50vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body onload="draw();">
+    <canvas id="canvas"></canvas>
+    <script>
+        function draw() {
+            const canvas = document.getElementById("canvas");
+            if (canvas.getContext) {
+                const context = canvas.getContext("2d");
+                context.rect(50, 50, 100, 100);
+                // context.fillRect(20, 20, 100, 100);
+                // context.clearRect(40, 40, 60, 60);
+                // context.strokeRect(45, 45, 50, 50);
+            }
+        }
+    </script>
+</body>
+</html>
