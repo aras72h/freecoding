@@ -13,26 +13,33 @@
             height: 100vh;
         }
         canvas {
-            background-color: #6EACDA;
+            background-color: #dac86e;
             color: #021526;
-            width: 50vw;
-            height: 50vh;
+            width: 600px;
+            height: 400px;
             margin: 0;
         }
     </style>
 </head>
 <body onload="draw();">
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" width="600" height="400"></canvas>
     <script>
+        const canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
         function draw() {
-            const canvas = document.getElementById("canvas");
-            if (canvas.getContext) {
-                const context = canvas.getContext("2d");
-                context.rect(50, 50, 100, 100);
-                // context.fillRect(20, 20, 100, 100);
-                // context.clearRect(40, 40, 60, 60);
-                // context.strokeRect(45, 45, 50, 50);
-            }
+
+            drawSquare(100,100, 50, 50, 25);
+        }
+
+        function drawSquare(x, y, width, height, count) {
+            if (count === 0) return;
+
+            ctx.fillRect(x, y, width, height);
+
+            setTimeout(() => {
+                ctx.clearRect(x, y, width, height);
+                setTimeout(() => { drawSquare(x, y, width, height, count - 1) }, 500)
+            }, 500)
         }
     </script>
 </body>
