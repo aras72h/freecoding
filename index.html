@@ -13,7 +13,7 @@
             height: 100vh;
         }
         canvas {
-            background-color: #dac86e;
+            background-color: #a9da6e;
             color: #021526;
             width: 600px;
             height: 400px;
@@ -27,20 +27,24 @@
         const canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         function draw() {
-
-            drawSquare(100,100, 50, 50, 25);
+            drawSquare();
         }
 
-        function drawSquare(x, y, width, height, count) {
-            if (count === 0) return;
+        function drawSquare() {
+            for (let i = 0; i <= 600; i+=10) {
+                for (let j = 0; j <= 400; j+=10) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, j);
+                    ctx.lineTo(i+5, j);
+                    ctx.lineTo(i+5, j+5);
+                    ctx.lineTo(i, j+5);
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+            }
 
-            ctx.fillRect(x, y, width, height);
-
-            setTimeout(() => {
-                ctx.clearRect(x, y, width, height);
-                setTimeout(() => { drawSquare(x, y, width, height, count - 1) }, 500)
-            }, 500)
         }
+
     </script>
 </body>
 </html>
