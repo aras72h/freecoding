@@ -11,6 +11,7 @@ const rectangle = {
     y: 175,
 }
 
+let velocity = 2;
 const loop = function() {
     ctx.fillStyle = '#ffc';
     ctx.fillRect(0, 0, 600, 400)
@@ -18,10 +19,10 @@ const loop = function() {
     ctx.beginPath();
     ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
     ctx.fill();
-    rectangle.x++;
+    rectangle.x+=velocity;
 
-    if (rectangle.x > 600) {
-        rectangle.x = -rectangle.width;
+    if (rectangle.x + rectangle.width > 600 || rectangle.x < 0) {
+        velocity *= -1;
     }
 
     window.requestAnimationFrame(loop);
